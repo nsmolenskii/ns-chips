@@ -6,5 +6,8 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+  second = 'Two';
+  values = [1, 3];
+  disabled = false;
+  required = false;
 }

@@ -1,28 +1,65 @@
-# NsMdExtentions
+# @ns/chips
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
+Provides [@angular/material] composition-component for [chips] with [autocomplete]. 
 
-## Development server
+## [Live Demo]
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+### Import module
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+```typescript
+//app.module.ts
+import {ChipsModule} from '@ns/ships';
 
-## Build
+@NgModule({
+ imports: [
+   ChipsModule,
+   ...
+ ],
+ ...
+})
+export class AppModule {}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+### Component usage
+```html
+<!--app.component.html-->
+<ns-chips placeholder="Options" [(ngModel)]="selectedOptions" required>
+  <ns-chip-option *ngFor="let option of availableOptions" [value]="option.value">{{option.name}}</ns-chip-option>
+</ns-chips>
+```
 
-## Running unit tests
+```typescript
+//app.component.ts
+@Component({
+  ...
+})
+class AppComponent {
+  availableOptions = [{value: 1, name: 'One'}, {value: 2, name: 'Two'}];
+}
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Theming
+```scss
+//styles.scss
+@import '~@angular/material/theming';
+@import '~@ns/chips/lib/theming';
 
-## Running end-to-end tests
+@include mat-core();
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-orange);
+$warning: mat-palette($mat-red);
 
-## Further help
+$theme: mat-light-theme($primary, $accent, $warning);
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+@include angular-material-theme($theme);
+@include ns-chips-theme($theme);
+
+```
+
+[Live Demo]: https://nsmolenskii.github.io/ns-chips/
+[@angular/material]: https://material.angular.io
+[chips]: https://material.angular.io/components/component/chips
+[autocomplete]: https://material.angular.io/components/component/autocomplete

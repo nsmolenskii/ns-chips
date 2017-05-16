@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  margin: 1em 0;
+  /deep/ {
+    .mat-input-wrapper {
+      margin-top: 0;
+      margin-bottom: 0;
+      line-height: 32px;
+    }
+    .mat-basic-chip {
+      cursor: default;
+      border-radius: 16px;
+      line-height: 32px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      padding: 0 12px;
+      md-icon {
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+        vertical-align: middle;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.mat-input-underline {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+
+  .mat-input-ripple {
+    &.mat-warn {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    &.mat-focused {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+}
+
+:host {
+  /deep/ md-input-container {
+    .mat-input-underline {
+      display: none;
+    }
+  }
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}

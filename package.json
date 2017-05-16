@@ -2,25 +2,35 @@
   "name": "@ns/chips",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "lib/index.ts",
+  "typings": "lib/index.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "pregithub-pages": "ng build --aot true --prod --base-href 'https://nsmolenskii.github.io/ns-chips/'",
+    "github-pages": "ngh"
   },
-  "private": true,
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/nsmolenskii/ns-chips.git"
+  },
   "dependencies": {
+    "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
+    "@angular/material": "^2.0.0-beta.5",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
+    "hammerjs": "^2.0.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
@@ -29,6 +39,7 @@
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "angular-cli-ghpages": "^0.5.0",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",

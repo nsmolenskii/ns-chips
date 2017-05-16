@@ -1,3 +1,34 @@
-<h1>
-  {{title}}
-</h1>
+<md-card>
+  <md-toolbar color="primary">
+    <span flex>@ns/chips: example</span>
+    <a md-button href="https://github.com/nsmolenskii/ns-chips" target="_blank">
+      <span>GitHub</span>
+      <md-icon>launch</md-icon>
+    </a>
+  </md-toolbar>
+
+  <md-card-content>
+    <form #form="ngForm">
+      <ns-chips name="numbers" placeholder="Numbers" [(ngModel)]="values" [required]="required" [disabled]="disabled">
+        <ns-chip-option [value]="1">One</ns-chip-option>
+        <ns-chip-option [value]="2">{{second}}</ns-chip-option>
+        <ns-chip-option [value]="3">Three</ns-chip-option>
+      </ns-chips>
+    </form>
+
+    <md-card-subtitle>Form valid: {{form.valid}}</md-card-subtitle>
+    <md-card-subtitle>Form value: {{form.value | json}}</md-card-subtitle>
+    <md-card-subtitle>Component value: {{values | json}}</md-card-subtitle>
+
+    <md-card-subtitle>Component options:</md-card-subtitle>
+
+    <md-input-container>
+      <input mdInput [(ngModel)]="second" placeholder="Second label">
+    </md-input-container>
+    <md-checkbox [(ngModel)]="disabled">Disabled</md-checkbox>
+    <md-checkbox [(ngModel)]="required">Required</md-checkbox>
+    <button md-button (click)="values = [1, 2, 3]">Select all</button>
+    <button md-button (click)="values = []">Select none</button>
+
+  </md-card-content>
+</md-card>

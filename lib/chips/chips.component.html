@@ -1,0 +1,43 @@
+<md-chip-list [tabIndex]="-1" (focus)="focusInput()">
+  <md-basic-chip
+    *ngFor="let option of selectedOptions; let index = index"
+    [class.td-chip-disabled]="disabled"
+    (keydown)="onChipKeyDown($event, index, option.value)"
+  >
+    <span [innerHtml]="option.viewValue"></span>
+    <md-icon *ngIf="!disabled" (click)="removeChip(option.value)">cancel</md-icon>
+  </md-basic-chip>
+  <md-input-container
+    floatPlaceholder="never"
+    [hidden]="disabled"
+    [color]="invalid ? 'warn' : 'primary'"
+  >
+    <input
+      mdInput
+      #input
+      [required]="required && !selectedOptions.length "
+      [mdAutocomplete]="autocomplete"
+      [formControl]="inputControl"
+      [placeholder]="placeholder"
+      (keydown)="onInputKeyDown($event)"
+      (keyup.enter)="addChip(input.value)"
+      (focus)="onInputFocus()"
+      (blur)="onInputBlur()"
+    >
+  </md-input-container>
+  <md-autocomplete #autocomplete="mdAutocomplete">
+    <md-option
+      *ngFor="let option of filteredOptions"
+      (click)="addChip(option.value)"
+      [value]="option.value"
+      [innerHtml]="option.viewValue"
+    ></md-option>
+  </md-autocomplete>
+</md-chip-list>
+<div class="mat-input-underline" [class.mat-disabled]="disabled">
+    <span
+      class="mat-input-ripple"
+      [class.mat-focused]="focused"
+      [class.mat-warn]="invalid"
+    ></span>
+</div>
